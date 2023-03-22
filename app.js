@@ -1,11 +1,11 @@
-let amountElement=document.querySelector("#amount");
-let firstSelect=document.querySelector("#firstCurrency");
-let secondSelect=document.querySelector("#secondCurrency");
+let amountElement=document.getElementById("amount");
+let firstSelect=document.getElementById("firstCurrency");
+let secondSelect=document.getElementById("secondCurrency");
 let currency=new Currency("USD","TRY");
 let ui=new UI(firstSelect,secondSelect);
- eventListeners();
- function eventListeners(){
-    amountElement.addEventListener("input",exchangeCurrency);
+eventListeners();
+function eventListeners(){
+    amountElement.addEventListener("input",amountCurrency);
     firstSelect.onchange=function(){
         currency.changeFirstCurrency(firstSelect.options[firstSelect.selectedIndex].textContent);
         ui.changeFirst();
@@ -14,12 +14,13 @@ let ui=new UI(firstSelect,secondSelect);
         currency.changeSecondCurrency(secondSelect.options[secondSelect.selectedIndex].textContent);
         ui.changeSecond();
     };
- }
- function exchangeCurrency(){
+}
+function amountCurrency(){
     currency.changeAmount(amountElement.value);
+    console.log(currency);
     currency.exchange()
     .then(result=>{
-        ui.displayResult(result);
+        ui.changeResult(result);
     })
     .catch(err=>console.log(err));
- }
+}

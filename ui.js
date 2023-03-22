@@ -5,15 +5,14 @@ class UI{
         this.outputFirst=document.getElementById("outputFirst");
         this.outputSecond=document.getElementById("outputSecond");
         this.outputResult=document.getElementById("outputResult");
-
     }
     changeFirst(){
-        this.outputFirst.textContent=this.firstSelect.options[this.firstSelect.selectedIndex].textContent;
+        this.outputFirst.textContent=this.firstSelect.options[firstSelect.selectedIndex].textContent;
     }
     changeSecond(){
-        this.outputSecond.textContent=this.secondSelect.options[this.secondSelect.selectedIndex].textContent;
+        this.outputSecond.textContent=this.secondSelect.options[secondSelect.selectedIndex].textContent;
     }
-    displayResult(result){
+    changeResult(result){
         this.outputResult.value=result;
     }
 }
